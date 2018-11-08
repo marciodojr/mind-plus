@@ -36,7 +36,7 @@
     >
       <v-toolbar-side-icon @click.stop="drawer = !drawer" class="hidden-md-and-up"></v-toolbar-side-icon>
       <v-spacer></v-spacer>
-      <v-btn depressed large color="primary" @click="logout"><v-icon>mdi-exit-to-app</v-icon> Sair</v-btn>
+      <!-- <v-btn depressed large color="primary" @click="logout"><v-icon>mdi-exit-to-app</v-icon> Sair</v-btn> -->
     </v-toolbar>
     <v-content>
       <v-slide-x-transition mode="out-in">
@@ -48,33 +48,39 @@
 
 <script>
 export default {
-  name: "DashboardLayout",
-  data() {
-    return {
-      drawer: true,
-      items: [
-        {
-          icon: "mdi-folder-upload",
-          title: "Cartões",
-          route: "/"
+    name: "DashboardLayout",
+    data() {
+        return {
+            drawer: true,
+            items: [
+                {
+                    icon: "layers",
+                    title: "Decks",
+                    route: "/user/decks"
+                },
+                {
+                    icon: "trending_up",
+                    title: "Statistics",
+                    route: "/user/stats"
+                }
+            ]
         }
-      ]
-    };
-  },
-  methods: {
-    logout() {
-      this.$store.commit('setAuthToken', '');
-      this.$router.push('/');
+    },
+    methods: {
+        logout() {
+            this.$store.commit("setAuthToken", "")
+            this.$router.push("/")
+        }
     }
-  }
-};
+}
 </script>
 
 <style lang="scss">
-  .v-list__tile--active {
-    .v-list__tile__action, .v-list__tile__content {
-      color: white;
+.v-list__tile--active {
+    .v-list__tile__action,
+    .v-list__tile__content {
+        color: white;
     }
     background-color: #616161;
-  }
+}
 </style>

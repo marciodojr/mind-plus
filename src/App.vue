@@ -3,21 +3,20 @@
 </template>
 
 <script>
-
-import DashboardLayout from "./layouts/DashboardLayout";
-import SimpleLayout from "./layouts/SimpleLayout";
+import DashboardLayout from "./layouts/DashboardLayout"
+import SimpleLayout from "./layouts/SimpleLayout"
 
 export default {
-  computed: {
-    layout() {
-      return this.$store.getters.layout;
+    computed: {
+        layout() {
+            return this.$store.getters.layout
+        }
+    },
+    components: {
+        // eslint-disable-next-line
+        DashboardLayout,
+        // eslint-disable-next-line
+        SimpleLayout
     }
-  },
-  components: {
-    // eslint-disable-next-line
-    DashboardLayout,
-    // eslint-disable-next-line
-    SimpleLayout
-  }
-};
+}
 </script>

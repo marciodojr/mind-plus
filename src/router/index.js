@@ -1,36 +1,23 @@
-import Vue from "vue";
-// import { store } from "./../store";
+import Vue from "vue"
+import VueRouter from "vue-router"
 
-import PageNotFound from "./../components/PageNotFound";
-import Dashboard from "./../components/Dashboard";
-
-import VueRouter from "vue-router";
+import PageNotFound from "./../components/PageNotFound"
+import Dashboard from "./../components/Dashboard"
+import Decks from "./../pages/user/Decks"
+import Stats from "./../pages/user/Stats"
 
 const routes = [
-  { path: "/", name: "dashboard", component: Dashboard },
-  { path: "*", name: "404", component: PageNotFound },
-];
+    { path: "/", name: "dashboard", component: Dashboard },
+    { path: "/user/decks", name: "decks", component: Decks },
+    { path: "/user/stats", name: "stats", component: Stats },
+    { path: "*", name: "404", component: PageNotFound }
+]
 
 const router = new VueRouter({
-  mode: "history",
-  routes
-});
+    mode: "history",
+    routes
+})
 
-Vue.use(VueRouter);
+Vue.use(VueRouter)
 
-// router.beforeEach((to, from, next) => {
-//   switch (to.name) {
-//     case "domains":
-//     case "aliases":
-//     case "emails":
-//       if (!store.getters.authToken) {
-//         next({ path: "/", replace: true });
-//       }
-//       break;
-//   }
-//   next();
-// });
-
-export {
-  router
-};
+export { router }

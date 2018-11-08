@@ -15,9 +15,9 @@
 
 <script>
 export default {
-  name: "pagenotfound",
-  created() {
-    this.$store.commit("setLayout", "SimpleLayout");
-  }
-};
+    name: "pagenotfound",
+    created() {
+        this.$store.commit("setLayout", "SimpleLayout")
+    }
+}
 </script>
