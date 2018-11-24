@@ -1,59 +1,52 @@
 <template>
-    <v-container>
-        <v-layout row mt-5>
-            <v-flex xs12>
-                <v-card>
-                    <v-toolbar color="light-blue" dark>
-                        <v-toolbar-side-icon>
-                            <v-icon>layers</v-icon>
-                        </v-toolbar-side-icon>
-                        <v-toolbar-title>Decks</v-toolbar-title>
-                        <v-spacer></v-spacer>
-                        <v-btn icon>
-                            <v-icon>search</v-icon>
-                        </v-btn>
-                        <v-btn icon @click="createNewDeck">
-                            <v-icon>add</v-icon>
-                        </v-btn>
-                    </v-toolbar>
-                    <v-list three-line>
-                        <template v-for="(item, index) in deckList">
-                            <v-divider v-if="index" :key="'d' + item.id"></v-divider>
-                            <v-list-tile :key="item.id" avatar @click="goToDeck(item.id)" ripple>
-                                <v-list-tile-avatar>
-                                    <v-icon color="teal">face</v-icon>
-                                </v-list-tile-avatar>
-                                <v-list-tile-content>
-                                    <v-list-tile-title>{{item.title}}</v-list-tile-title>
-                                    <v-list-tile-sub-title>{{item.description}}</v-list-tile-sub-title>
-                                    <v-list-tile-sub-title>Nº Cards: #{{item.totalCards}}</v-list-tile-sub-title>
-                                </v-list-tile-content>
-                                <v-list-tile-action>
-                                    <v-rating
-                                        v-model="item.strength"
-                                        :dense="true"
-                                        :readonly="true"
-                                        :half-increments="true"
-                                        background-color="orange lighten-3"
-                                        color="orange"
-                                    ></v-rating>
-                                </v-list-tile-action>
-                            </v-list-tile>
-                        </template>
-                    </v-list>
-                </v-card>
-            </v-flex>
-        </v-layout>
-        <new-deck
-            :dialog="openNewDeck"
-            @ondismiss="openNewDeck = false"
-            @onsave="addToDeckList"
-        ></new-deck>
-    </v-container>
+    <v-layout row mt-5>
+        <v-flex xs12>
+            <v-card>
+                <v-toolbar color="light-blue" dark>
+                    <v-toolbar-side-icon>
+                        <v-icon>layers</v-icon>
+                    </v-toolbar-side-icon>
+                    <v-toolbar-title>Decks</v-toolbar-title>
+                    <v-spacer></v-spacer>
+                    <v-btn icon>
+                        <v-icon>search</v-icon>
+                    </v-btn>
+                    <v-btn icon @click="createNewDeck">
+                        <v-icon>add</v-icon>
+                    </v-btn>
+                </v-toolbar>
+                <v-list three-line>
+                    <template v-for="(item, index) in deckList">
+                        <v-divider v-if="index" :key="'d' + item.id"></v-divider>
+                        <v-list-tile :key="item.id" avatar @click="goToDeck(item.id)">
+                            <v-list-tile-avatar>
+                                <v-icon color="teal">face</v-icon>
+                            </v-list-tile-avatar>
+                            <v-list-tile-content>
+                                <v-list-tile-title>{{item.title}}</v-list-tile-title>
+                                <v-list-tile-sub-title>{{item.description}}</v-list-tile-sub-title>
+                                <v-list-tile-sub-title>Nº Cards: #{{item.totalCards}}</v-list-tile-sub-title>
+                            </v-list-tile-content>
+                            <v-list-tile-action>
+                                <v-rating
+                                    v-model="item.strength"
+                                    :dense="true"
+                                    :readonly="true"
+                                    :half-increments="true"
+                                    background-color="orange lighten-3"
+                                    color="orange"
+                                ></v-rating>
+                            </v-list-tile-action>
+                        </v-list-tile>
+                    </template>
+                </v-list>
+            </v-card>
+        </v-flex>
+        <new-deck :dialog="openNewDeck" @ondismiss="openNewDeck = false" @onsave="addToDeckList"></new-deck>
+    </v-layout>
 </template>
 <script>
-
-import NewDeck from '@/components/NewDeck'
+import NewDeck from "@/components/NewDeck"
 
 export default {
     components: {
@@ -111,7 +104,7 @@ export default {
                     strength: 2,
                     totalCards: 50
                 }
-            ],
+            ]
         }
     },
     methods: {
@@ -134,8 +127,9 @@ export default {
 
             return "light-blue darken-4"
         },
-        // eslint-disable-next-line
-        goToDeck(deckId) {},
+        goToDeck(deckId) {
+            this.$router.push(`/user/decks/${deckId}`)
+        },
         createNewDeck() {
             this.openNewDeck = true
         },

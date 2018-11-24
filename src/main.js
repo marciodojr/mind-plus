@@ -1,5 +1,6 @@
 import Vue from "vue"
 import "./plugins/vuetify"
+import './assets/style.scss';
 
 import "./validator"
 import App from "./App.vue"
